@@ -1,0 +1,11 @@
+language: csharp
+solution: EllinghamScript.sln
+dotnet:
+  3.0.1
+mono:
+  none
+install:
+  - dotnet restore
+script:
+  - dotnet build
+  - dotnet test EllinghamScriptTests
