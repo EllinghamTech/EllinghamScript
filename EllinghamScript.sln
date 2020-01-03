@@ -10,8 +10,6 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllinghamScriptTests", "EllinghamScriptTests\EllinghamScriptTests.csproj", "{BAE59016-8B84-49AE-B063-55358FB24FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllinghamScriptSamples", "EllinghamScriptSamples\EllinghamScriptSamples.csproj", "{C5AC1048-35DD-4CF7-8FC3-31D26C922FD7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{BAE59016-8B84-49AE-B063-55358FB24FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAE59016-8B84-49AE-B063-55358FB24FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAE59016-8B84-49AE-B063-55358FB24FAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5AC1048-35DD-4CF7-8FC3-31D26C922FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5AC1048-35DD-4CF7-8FC3-31D26C922FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5AC1048-35DD-4CF7-8FC3-31D26C922FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5AC1048-35DD-4CF7-8FC3-31D26C922FD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
