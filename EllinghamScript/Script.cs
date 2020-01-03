@@ -105,7 +105,9 @@ namespace EllinghamScript
                         continue;
                     
                     case '\n': // Only valid as part of a string
-                        if (lineComment)
+                        if (inQuotes || inSingleQuotes)
+                            parsedScript.Append(ch);
+                        else if (lineComment)
                             inComment = lineComment = false;
                         continue;
                     
