@@ -27,12 +27,8 @@ namespace EllinghamScript.ExecutionContexts
                     
                 return Operations.FindBest(first.GetType(), second.GetType(), OperationString).Compile()(first, second);
             }
-            else
-            {
-                return ContextToExecute.Execute();
-            }
 
-            return null;
+            return ContextToExecute.Execute();
         }
     }
 }
