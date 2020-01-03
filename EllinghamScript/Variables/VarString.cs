@@ -1,3 +1,4 @@
+using System;
 using EllinghamScript.Variables.Attributes;
 
 namespace EllinghamScript.Variables
@@ -60,6 +61,12 @@ namespace EllinghamScript.Variables
         public VarString Trim()
         {
             return new VarString(Value.Trim());
+        }
+        
+        [VarMethodAvailable(IsAvailable = true)]
+        public VarString Replace(VarString occurrence, VarString replaceWith)
+        {
+            return new VarString(Value.Replace(occurrence.Value, replaceWith.Value, StringComparison.InvariantCulture));
         }
     }
 }
