@@ -23,13 +23,8 @@ namespace EllinghamScriptTests
                 VarBase result = context.Execute();
             }
             
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarNumber a = (VarNumber)scriptRunner.Variables["a"];
-            Assert.AreEqual(3, a.Value);
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
-            VarNumber b = (VarNumber)scriptRunner.Variables["b"];
-            Assert.AreEqual(2, b.Value);
+            TestHelpers.VariableCheck(scriptRunner, "a", 3d, typeof(VarNumber));
+            TestHelpers.VariableCheck(scriptRunner, "b", 2d, typeof(VarNumber));
         }
     }
 }

@@ -23,9 +23,7 @@ namespace EllinghamScriptTests
                 VarBase result = context.Execute();
             }
             
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarNumber a = (VarNumber)scriptRunner.Variables["a"];
-            Assert.AreEqual(10, a.Value);
+            TestHelpers.VariableCheck(scriptRunner, "a", 10d, typeof(VarNumber));
         }
         
         [Test]
@@ -41,9 +39,7 @@ namespace EllinghamScriptTests
                 VarBase result = context.Execute();
             }
             
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarNumber a = (VarNumber)scriptRunner.Variables["a"];
-            Assert.AreEqual(5, a.Value);
+            TestHelpers.VariableCheck(scriptRunner, "a", 5d, typeof(VarNumber));
         }
     }
 }

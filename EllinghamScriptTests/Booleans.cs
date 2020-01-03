@@ -31,6 +31,9 @@ namespace EllinghamScriptTests
             Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
             VarBoolean b = (VarBoolean)scriptRunner.Variables["b"];
             Assert.False(b.Value);
+            
+            TestHelpers.VariableCheck(scriptRunner, "a", true, typeof(VarBoolean));
+            TestHelpers.VariableCheck(scriptRunner, "b", false, typeof(VarBoolean));
         }
         
         [Test]
@@ -54,6 +57,9 @@ namespace EllinghamScriptTests
             Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
             VarBoolean b = (VarBoolean)scriptRunner.Variables["b"];
             Assert.False(b.Value);
+            
+            TestHelpers.VariableCheck(scriptRunner, "a", true, typeof(VarBoolean));
+            TestHelpers.VariableCheck(scriptRunner, "b", false, typeof(VarBoolean));
         }
         
         [Test]
@@ -69,14 +75,9 @@ namespace EllinghamScriptTests
             {
                 VarBase result = context.Execute();
             }
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarBoolean a = (VarBoolean)scriptRunner.Variables["a"];
-            Assert.True(a.Value);
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
-            VarBoolean b = (VarBoolean)scriptRunner.Variables["b"];
-            Assert.False(b.Value);
+
+            TestHelpers.VariableCheck(scriptRunner, "a", true, typeof(VarBoolean));
+            TestHelpers.VariableCheck(scriptRunner, "b", false, typeof(VarBoolean));
         }
     }
 }

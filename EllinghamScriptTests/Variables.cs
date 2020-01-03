@@ -23,9 +23,7 @@ namespace EllinghamScriptTests
                 VarBase result = context.Execute();
             }
             
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarString a = (VarString)scriptRunner.Variables["a"];
-            Assert.AreEqual("single quoted string", a.Value);
+            TestHelpers.VariableCheck(scriptRunner, "a", "single quoted string", typeof(VarString));
         }
         
         [Test]
@@ -41,9 +39,7 @@ namespace EllinghamScriptTests
                 VarBase result = context.Execute();
             }
             
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarString a = (VarString)scriptRunner.Variables["a"];
-            Assert.AreEqual("double quoted string", a.Value);
+            TestHelpers.VariableCheck(scriptRunner, "a", "double quoted string", typeof(VarString));
         }
     }
 }

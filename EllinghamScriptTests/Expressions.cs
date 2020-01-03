@@ -23,14 +23,9 @@ namespace EllinghamScriptTests
             {
                 VarBase result = context.Execute();
             }
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarNumber a = (VarNumber)scriptRunner.Variables["a"];
-            Assert.AreEqual(2, a.Value);
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
-            VarNumber b = (VarNumber)scriptRunner.Variables["b"];
-            Assert.AreEqual(24, b.Value);
+
+            TestHelpers.VariableCheck(scriptRunner, "a", 2d, typeof(VarNumber));
+            TestHelpers.VariableCheck(scriptRunner, "b", 24d, typeof(VarNumber));
         }
         
         [Test]
@@ -46,10 +41,8 @@ namespace EllinghamScriptTests
             {
                 VarBase result = context.Execute();
             }
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarNumber a = (VarNumber)scriptRunner.Variables["a"];
-            Assert.AreEqual(2, a.Value);
+
+            TestHelpers.VariableCheck(scriptRunner, "a", 2d, typeof(VarNumber));
         }
         
         [Test]
@@ -64,10 +57,8 @@ namespace EllinghamScriptTests
             {
                 VarBase result = context.Execute();
             }
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarString a = (VarString)scriptRunner.Variables["a"];
-            Assert.AreEqual("testme", a.Value);
+
+            TestHelpers.VariableCheck(scriptRunner, "a", "testme", typeof(VarString));
         }
         
         [Test]
@@ -82,18 +73,10 @@ namespace EllinghamScriptTests
             {
                 VarBase result = context.Execute();
             }
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
-            VarString a = (VarString)scriptRunner.Variables["a"];
-            Assert.AreEqual("Platform", a.Value);
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("b"));
-            VarString b = (VarString)scriptRunner.Variables["b"];
-            Assert.AreEqual("Script", b.Value);
-            
-            Assert.IsTrue(scriptRunner.Variables.ContainsKey("c"));
-            VarString c = (VarString)scriptRunner.Variables["c"];
-            Assert.AreEqual("PlatformScript", c.Value);
+
+            TestHelpers.VariableCheck(scriptRunner, "a", "Platform", typeof(VarString));
+            TestHelpers.VariableCheck(scriptRunner, "b", "Script", typeof(VarString));
+            TestHelpers.VariableCheck(scriptRunner, "c", "PlatformScript", typeof(VarString));
         }
     }
 }
