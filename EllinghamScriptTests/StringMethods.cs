@@ -57,5 +57,15 @@ namespace EllinghamScriptTests
             TestHelpers.VariableCheck(scriptRunner, "a", "Ellingham Innovations", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "b", true, typeof(VarBoolean));
         }
+        
+        [Test]
+        public void IsEmpty()
+        {
+            Script script = new Script("a = ''; b = a.IsEmpty();");
+            ScriptRunner scriptRunner = new ScriptRunner(script);
+            VarBase result = scriptRunner.Execute();
+            TestHelpers.VariableCheck(scriptRunner, "a", "", typeof(VarString));
+            TestHelpers.VariableCheck(scriptRunner, "b", true, typeof(VarBoolean));
+        }
     }
 }
