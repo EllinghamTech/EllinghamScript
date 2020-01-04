@@ -69,7 +69,7 @@ namespace EllinghamScript.Internal
             {
                 result = context.Execute();
                 
-                if(result.VariableAction != VariableAction.None)
+                if(result != null && result.VariableAction != VariableAction.None)
                     throw new Exception("Unhandled Variable Action");
             }
 
