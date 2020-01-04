@@ -98,8 +98,8 @@ All variables contain the following methods:
 | Trim() | Removes any whitespaces at the beginning and end of the string | String |
 | ToUpper() | Removes any whitespaces at the beginning and end of the string | String |
 | ToLower() | Removes any whitespaces at the beginning and end of the string | String |
-| IsEmpty() | True if the string is empty | String |
-| Contains(s1) | True if the string contains s1 | String |
+| IsEmpty() | True if the string is empty | Boolean |
+| Contains(s1) | True if the string contains s1 | Boolean |
 | Length() | The length of the string | Numeric |
 | Replace(s1, s2) | Replaces any occurrences of s1 with s2 | String |
 
