@@ -19,14 +19,14 @@ namespace EllinghamScript.ExecutionContexts
 
             switch (symbol.ToLower())
             {
-                case "true":
+                case Constants.True:
                     ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBoolean(true));
                     return;
-                case "false":
+                case Constants.False:
                     ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBoolean(false));
                     return;
-                case "null":
-                case "undefined":
+                case Constants.Null:
+                case Constants.Undefined:
                     ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBase());
                     return;
                 case Constants.While:

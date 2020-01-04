@@ -15,14 +15,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("if(true) { a = 10; } else { a = 5; }");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", 10d, typeof(VarNumber));
         }
         
@@ -31,14 +24,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("if(false) { a = 10; } else { a = 5; }");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", 5d, typeof(VarNumber));
         }
     }

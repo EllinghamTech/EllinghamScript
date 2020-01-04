@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using System.Reflection;
 using EllinghamScript.Variables.Attributes;
+using EllinghamScript.Variables.Misc;
 
 namespace EllinghamScript.Variables
 {
     public class VarBase
     {
         public bool Constant { get; set; } = false;
-        
+        public VariableAction VariableAction { get; set; } = VariableAction.None;
+
         public VarBase()
         {
         }

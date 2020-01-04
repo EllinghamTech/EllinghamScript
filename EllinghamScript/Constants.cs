@@ -19,6 +19,12 @@ namespace EllinghamScript
         public const char Escape = '\\';
         public const char NullOperator = '\0';
         
+        // Keywords
+        public const string True = "true";
+        public const string False = "false";
+        public const string Null = "null";
+        public const string Undefined = "undefined";
+        
         // Control Flow
         public const string If = "if";
         public const string ElseIf = "elseif";

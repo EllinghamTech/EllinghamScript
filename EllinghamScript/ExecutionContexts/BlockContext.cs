@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EllinghamScript.Internal;
 using EllinghamScript.Variables;
+using EllinghamScript.Variables.Misc;
 
 namespace EllinghamScript.ExecutionContexts
 {
@@ -33,6 +34,9 @@ namespace EllinghamScript.ExecutionContexts
             foreach (ExecutionContext context in ExecutionContexts)
             {
                 returnVar = context.Execute();
+
+                if (returnVar.VariableAction != VariableAction.None)
+                    return returnVar;
             }
 
             return returnVar;

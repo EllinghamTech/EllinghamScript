@@ -16,13 +16,7 @@ namespace EllinghamScriptTests
             // Remember, except for brackets there is no order of operations at this time
             Script script = new Script("a = true; b = false;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
+            VarBase result = scriptRunner.Execute();
             
             Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
             VarBoolean a = (VarBoolean)scriptRunner.Variables["a"];
@@ -42,13 +36,7 @@ namespace EllinghamScriptTests
             // Remember, except for brackets there is no order of operations at this time
             Script script = new Script("a = (1 == 1); b = 1 < 1;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
+            VarBase result = scriptRunner.Execute();
             
             Assert.IsTrue(scriptRunner.Variables.ContainsKey("a"));
             VarBoolean a = (VarBoolean)scriptRunner.Variables["a"];
@@ -68,14 +56,7 @@ namespace EllinghamScriptTests
             // Remember, except for brackets there is no order of operations at this time
             Script script = new Script("a = false || true; b = true && false;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", true, typeof(VarBoolean));
             TestHelpers.VariableCheck(scriptRunner, "b", false, typeof(VarBoolean));
         }

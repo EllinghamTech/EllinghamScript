@@ -5,6 +5,7 @@ using System.Text;
 using EllinghamScript.ExecutionContexts;
 using EllinghamScript.Functions;
 using EllinghamScript.Variables;
+using EllinghamScript.Variables.Misc;
 
 namespace EllinghamScript.Internal
 {
@@ -67,6 +68,9 @@ namespace EllinghamScript.Internal
             foreach (ExecutionContext context in execution)
             {
                 result = context.Execute();
+                
+                if(result.VariableAction != VariableAction.None)
+                    throw new Exception("Unhandled Variable Action");
             }
 
             return result;

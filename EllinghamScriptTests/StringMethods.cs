@@ -15,14 +15,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'LowerCase'; a = a.ToLower();");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "lowercase", typeof(VarString));
         }
         
@@ -31,14 +24,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'upperCase'; a = a.ToUpper();");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "UPPERCASE", typeof(VarString));
         }
         
@@ -47,14 +33,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = '  \n my string needs trimming   '; b = a.Trim();");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "  \n my string needs trimming   ", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "b", "my string needs trimming", typeof(VarString));
         }
@@ -64,14 +43,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'Ellingham Innovations'; b = a.Replace('Innovations', 'Dev');");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "Ellingham Innovations", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "b", "Ellingham Dev", typeof(VarString));
         }
@@ -81,14 +53,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'Ellingham Innovations'; b = a.Contains('Innovations');");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-            
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "Ellingham Innovations", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "b", true, typeof(VarBoolean));
         }

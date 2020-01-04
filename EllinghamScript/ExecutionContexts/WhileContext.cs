@@ -1,5 +1,6 @@
 using EllinghamScript.Internal;
 using EllinghamScript.Variables;
+using EllinghamScript.Variables.Misc;
 
 namespace EllinghamScript.ExecutionContexts
 {
@@ -21,6 +22,20 @@ namespace EllinghamScript.ExecutionContexts
             while (Condition.Execute().ToBoolean())
             {
                 result = LoopExecution.Execute();
+
+                switch (result.VariableAction)
+                {
+                    case VariableAction.Break:
+                        result.VariableAction = VariableAction.None;
+                        return result;
+                    case VariableAction.LoopContinue:
+                        result.VariableAction = VariableAction.None;
+                        continue;
+                    case VariableAction.None:
+                        break;
+                    default:
+                        return result;
+                }
             }
 
             return result;

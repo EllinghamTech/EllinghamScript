@@ -16,14 +16,7 @@ namespace EllinghamScriptTests
             // Remember, except for brackets there is no order of operations at this time
             Script script = new Script("a = 1+1; b = (10 + a) * (0.5 + (2 - 0.5) * 1); b = (b * 1) + b - (b + 1) + 1;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", 2d, typeof(VarNumber));
             TestHelpers.VariableCheck(scriptRunner, "b", 24d, typeof(VarNumber));
         }
@@ -34,14 +27,7 @@ namespace EllinghamScriptTests
             // Remember, except for brackets there is no order of operations at this time
             Script script = new Script("a = 1+1;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", 2d, typeof(VarNumber));
         }
         
@@ -50,14 +36,7 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'test' + 'me';");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-
+            VarBase result = scriptRunner.Execute();
             TestHelpers.VariableCheck(scriptRunner, "a", "testme", typeof(VarString));
         }
         
@@ -66,14 +45,8 @@ namespace EllinghamScriptTests
         {
             Script script = new Script("a = 'Platform'; b = 'Script'; c = a + b;");
             ScriptRunner scriptRunner = new ScriptRunner(script);
-
-            IEnumerable<ExecutionContext> execution = scriptRunner.GetAllExecutionContexts();
-
-            foreach (ExecutionContext context in execution)
-            {
-                VarBase result = context.Execute();
-            }
-
+            VarBase result = scriptRunner.Execute();
+            
             TestHelpers.VariableCheck(scriptRunner, "a", "Platform", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "b", "Script", typeof(VarString));
             TestHelpers.VariableCheck(scriptRunner, "c", "PlatformScript", typeof(VarString));
