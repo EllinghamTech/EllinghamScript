@@ -13,6 +13,8 @@ namespace EllinghamScriptTests
 
             VarBase variable = scriptRunner.Variables[variableName];
             
+            Assert.NotNull(variable);
+
             Assert.AreEqual(variableType, variable.GetType());
 
             if (variable is VarString varString)
