@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using EllinghamScript;
-using EllinghamScript.ExecutionContexts;
 using EllinghamScript.Internal;
 using EllinghamScript.Variables;
 using NUnit.Framework;

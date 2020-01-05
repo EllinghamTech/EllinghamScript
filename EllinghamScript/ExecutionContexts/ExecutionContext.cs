@@ -7,6 +7,7 @@ namespace EllinghamScript.ExecutionContexts
     {
         protected ScriptRunner ScriptRunner { get; set; } 
         protected ExecutionContext ContextToExecute { get; set; }
+        public char ContextEndCharacter { get; protected set; } = Constants.EndStatement;
 
         public ExecutionContext(ScriptRunner scriptRunner)
         {

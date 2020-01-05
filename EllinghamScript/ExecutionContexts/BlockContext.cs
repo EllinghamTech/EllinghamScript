@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using EllinghamScript.Internal;
 using EllinghamScript.Variables;
@@ -18,9 +19,10 @@ namespace EllinghamScript.ExecutionContexts
     public class BlockContext : ExecutionContext
     {
         public IEnumerable<ExecutionContext> ExecutionContexts { get; set; } = null;
-        
+
         public BlockContext(ScriptRunner scriptRunner) : base(scriptRunner)
         {
+            ContextEndCharacter = Constants.BracesClose;
             ExecutionContexts = scriptRunner.GetAllExecutionContexts(false, new[] {Constants.BracesClose});
         }
 

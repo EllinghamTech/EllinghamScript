@@ -16,7 +16,7 @@ namespace EllinghamScript.Internal
         
         public char PrevPrevChar => (Pointer > 1) ? Script.CharArr[Pointer - 2] : Constants.NullOperator;
         public char PrevChar => (Pointer > 0) ? Script.CharArr[Pointer - 1] : Constants.NullOperator;
-        public char CurChar => Script.CharArr[Pointer];
+        public char CurChar => (Script.Length > Pointer) ? Script.CharArr[Pointer] : Constants.NullOperator;
         public char NextChar => (Script.Length > Pointer + 1) ? Script.CharArr[Pointer + 1] : Constants.NullOperator;
         public char NextNextChar => (Script.Length > Pointer + 2) ? Script.CharArr[Pointer + 2] : Constants.NullOperator;
         
@@ -54,6 +54,12 @@ namespace EllinghamScript.Internal
                 
                 if(context == null)
                     return executionContexts;
+                
+                // Just sanity check that we are at the end of the context
+                if(context.ContextEndCharacter != PrevChar
+                   && context.ContextEndCharacter != CurChar
+                   && !(PrevChar == ' ' && PrevPrevChar == context.ContextEndCharacter))
+                    throw new Exception("Expecting " + context.ContextEndCharacter + " character");
                 
                 executionContexts.Add(context);
             }

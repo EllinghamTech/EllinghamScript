@@ -13,6 +13,7 @@ namespace EllinghamScript.ExecutionContexts
         {
             Condition = new ExpressionContext(scriptRunner);
             LoopExecution = scriptRunner.CollectContext();
+            ContextEndCharacter = LoopExecution.ContextEndCharacter;
         }
 
         public override VarBase Execute()

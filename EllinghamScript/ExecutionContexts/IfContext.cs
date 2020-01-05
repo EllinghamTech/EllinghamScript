@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using EllinghamScript.Internal;
 using EllinghamScript.Variables;
 
@@ -14,6 +15,7 @@ namespace EllinghamScript.ExecutionContexts
             // We are here from if, the only valid entry point.
             ExecutionContext condition = new ExpressionContext(scriptRunner);
             ExecutionContext conditionalExecution = scriptRunner.CollectContext();
+            ContextEndCharacter = conditionalExecution.ContextEndCharacter;
             
             IfElseList.Add(condition, conditionalExecution);
 
@@ -29,11 +31,13 @@ namespace EllinghamScript.ExecutionContexts
                         condition = new ExpressionContext(scriptRunner);
                         conditionalExecution = scriptRunner.CollectContext();
                         IfElseList.Add(condition, conditionalExecution);
+                        ContextEndCharacter = conditionalExecution.ContextEndCharacter;
                         continue;
                     case Constants.Else:
                         condition = new AlwaysTrueContext(scriptRunner);
                         conditionalExecution = scriptRunner.CollectContext();
                         IfElseList.Add(condition, conditionalExecution);
+                        ContextEndCharacter = conditionalExecution.ContextEndCharacter;
                         return;
                     default:
                         return;

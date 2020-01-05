@@ -17,33 +17,39 @@ namespace EllinghamScript.ExecutionContexts
         {
             Symbol = symbol;
 
-            switch (symbol.ToLower())
+            GetContext();
+            ContextEndCharacter = ContextToExecute.ContextEndCharacter;
+        }
+
+        public void GetContext()
+        {
+            switch (Symbol.ToLower())
             {
                 case Constants.True:
-                    ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBoolean(true));
+                    ContextToExecute = new ConstantWrapperContext(ScriptRunner, new VarBoolean(true));
                     return;
                 case Constants.False:
-                    ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBoolean(false));
+                    ContextToExecute = new ConstantWrapperContext(ScriptRunner, new VarBoolean(false));
                     return;
                 case Constants.Null:
                 case Constants.Undefined:
-                    ContextToExecute = new ConstantWrapperContext(scriptRunner, new VarBase());
+                    ContextToExecute = new ConstantWrapperContext(ScriptRunner, new VarBase());
                     return;
                 case Constants.While:
-                    ContextToExecute = new WhileContext(scriptRunner);
+                    ContextToExecute = new WhileContext(ScriptRunner);
                     return;
                 case Constants.If:
-                    ContextToExecute = new IfContext(scriptRunner);
+                    ContextToExecute = new IfContext(ScriptRunner);
                     return;
                 case Constants.Else:
                 case Constants.ElseIf:
                     throw new Exception("Elseif and Else can only form part of an If control structure");
             }
 
-            if (scriptRunner.Functions.ContainsKey(symbol))
-                ContextToExecute = new FunctionContext(scriptRunner, scriptRunner.Functions[symbol]);
+            if (ScriptRunner.Functions.ContainsKey(Symbol))
+                ContextToExecute = new FunctionContext(ScriptRunner, ScriptRunner.Functions[Symbol]);
             else
-                ContextToExecute = new VariableContext(scriptRunner, symbol);
+                ContextToExecute = new VariableContext(ScriptRunner, Symbol);
         }
     }
 }

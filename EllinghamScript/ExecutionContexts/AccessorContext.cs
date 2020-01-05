@@ -23,7 +23,7 @@ namespace EllinghamScript.ExecutionContexts
             if(scriptRunner.CurChar == '(')
                 ContextToExecute = new MethodContext(ScriptRunner, VariableName, AccessorSymbolName, scriptRunner.CollectArguments());
             else
-                ContextToExecute = null; //new PropertyContext(ScriptRunner, variable, AccessorSymbolName);
+                ContextToExecute = new PropertyContext(ScriptRunner, variable, AccessorSymbolName);
         }
 
         public override VarBase Execute()
