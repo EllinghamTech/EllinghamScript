@@ -32,6 +32,8 @@ namespace EllinghamScript
         public const string While = "while";
         public const string For = "for";
         public const string Foreach = "foreach";
+        public const string Break = "break";
+        public const string Continue = "continue";
 
         public static readonly char[] ReservedOperators =
         {

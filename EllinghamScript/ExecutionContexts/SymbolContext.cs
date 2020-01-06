@@ -41,6 +41,12 @@ namespace EllinghamScript.ExecutionContexts
                 case Constants.If:
                     ContextToExecute = new IfContext(ScriptRunner);
                     return;
+                case Constants.Break:
+                    ContextToExecute = new BreakContext(ScriptRunner);
+                    return;
+                case Constants.Continue:
+                    ContextToExecute = new ContinueContext(ScriptRunner);
+                    return;
                 case Constants.Else:
                 case Constants.ElseIf:
                     throw new Exception("Elseif and Else can only form part of an If control structure");
